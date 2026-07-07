@@ -77,10 +77,6 @@ export const site = {
     "Applied AI Engineer specializing in agentic systems and production-grade RAG, with a backend-first focus on FastAPI, data pipelines, and LLM orchestration (LangGraph, OpenAI Agentic SDK). Built a multi-agent tutoring platform — winner of the Microsoft Skill Fest Student Award — with a hardened safety layer and citation-grounded retrieval, and co-built NextHire AI, a SaaS agentic developer-evaluation product.",
   email: "nithishaleni1806@gmail.com",
   phone: "+91 6379 074 239",
-  /**
-   * TODO: drop the latest resume PDF into /public/resume.pdf.
-   * The download button points here.
-   */
   resumeUrl: "/resume.pdf",
   socials,
 };

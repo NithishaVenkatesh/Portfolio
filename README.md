@@ -26,10 +26,11 @@ npm run lint
 
 ### TODOs before going live
 
-1. **Resume PDF** — drop the latest resume at `public/resume.pdf` (the download buttons point there).
-2. **Domain** — replace `site.url` in `src/data/site.ts` with the production domain (used for canonical URL, Open Graph, sitemap, robots and JSON-LD).
-3. **Certifications** — the resume lists none; add entries to `certifications` in `src/data/site.ts` and a section will be worth adding (see the TODO in `src/components/sections/education.tsx`).
-4. **OG image** — `public/og.png` is carried over from V1; regenerate if the branding should change.
+1. **Domain** — replace `site.url` in `src/data/site.ts` with the production domain (used for canonical URL, Open Graph, sitemap, robots and JSON-LD).
+2. **Certifications** — the resume lists none; add entries to `certifications` in `src/data/site.ts` and a section will be worth adding (see the TODO in `src/components/sections/education.tsx`).
+3. **OG image** — `public/og.png` is carried over from V1; regenerate if the branding should change.
+
+To update the resume later, replace `public/resume.pdf`.
 
 ## Structure
 
