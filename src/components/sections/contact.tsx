@@ -1,6 +1,8 @@
 import { Mail, Phone, Github, Linkedin } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/motion";
+import { CopyEmail } from "@/components/copy-email";
+import { ResumePreview } from "@/components/resume-preview";
 import { site } from "@/data/site";
 
 export function ContactSection() {
@@ -24,13 +26,15 @@ export function ContactSection() {
               <Mail size={14} aria-hidden />
               {site.email}
             </a>
+            <CopyEmail />
             <a
               href={`tel:${site.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors duration-200 hover:bg-card/60"
+              className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors duration-200 hover:bg-surface"
             >
               <Phone size={14} aria-hidden />
               {site.phone}
             </a>
+            <ResumePreview />
           </div>
 
           <div className="mt-5 flex items-center gap-4">

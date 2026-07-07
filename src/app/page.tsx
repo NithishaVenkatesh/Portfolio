@@ -1,6 +1,9 @@
 import { Navbar } from "@/components/navbar";
 import { BackToTop } from "@/components/back-to-top";
+import { CommandPalette } from "@/components/command-palette";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { Hero } from "@/components/sections/hero";
+import { GlanceSection } from "@/components/sections/glance";
 import { ExperienceSection } from "@/components/sections/experience";
 import { ProjectsSection } from "@/components/sections/projects";
 import { SkillsSection } from "@/components/sections/skills";
@@ -36,9 +39,11 @@ export default function Home() {
       >
         Skip to content
       </a>
+      <ScrollProgress />
       <Navbar />
       <main className="mx-auto w-full max-w-[680px] px-5 sm:px-8">
         <Hero />
+        <GlanceSection />
         <ExperienceSection />
         <ProjectsSection />
         <SkillsSection />
@@ -48,6 +53,7 @@ export default function Home() {
         <Footer />
       </main>
       <BackToTop />
+      <CommandPalette />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

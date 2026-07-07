@@ -8,6 +8,7 @@ import {
   Layers,
   Mail,
   ArrowDownToLine,
+  Command,
 } from "lucide-react";
 import { site } from "@/data/site";
 import { useActiveSection } from "@/hooks/use-active-section";
@@ -58,6 +59,20 @@ export function Navbar() {
         })}
 
         <span className="mx-1 h-5 w-px bg-line" aria-hidden />
+
+        <button
+          type="button"
+          aria-label="Open command palette (Cmd+K)"
+          title="Command palette (⌘K)"
+          onClick={() =>
+            window.dispatchEvent(
+              new KeyboardEvent("keydown", { key: "k", metaKey: true }),
+            )
+          }
+          className="hidden items-center gap-1 rounded-full px-2.5 py-1.5 font-mono text-[11px] font-medium text-soft transition-colors duration-200 hover:bg-surface hover:text-ink sm:flex"
+        >
+          <Command size={12} aria-hidden />K
+        </button>
 
         <a
           href={site.resumeUrl}

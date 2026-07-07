@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Section } from "@/components/ui/section";
-import { Tag } from "@/components/ui/tag";
+import { SkillTag } from "@/components/skill-tag";
 import { Stagger, StaggerItem, HoverLift } from "@/components/motion";
 import { skillGroups, tools, type Tool } from "@/data/site";
 
@@ -57,9 +57,7 @@ export function SkillsSection() {
             </h3>
             <div className="mt-2.5 flex flex-wrap gap-1.5">
               {group.skills.map((skill) => (
-                <Tag key={skill} className="px-3 py-1.5 text-[12.5px]">
-                  {skill}
-                </Tag>
+                <SkillTag key={skill} skill={skill} />
               ))}
             </div>
           </StaggerItem>
