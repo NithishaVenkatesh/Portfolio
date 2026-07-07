@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), var(--font-inter), ui-sans-serif,
+    sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+}
+
+@theme {
+  /* Palette carried over from V1: ink text, quiet grays, Twitter-blue accent. */
+  --color-ink: #0f1419;
+  --color-soft: #555555;
+  --color-faint: #8a8f98;
+  --color-line: #ececec;
+  --color-line-strong: #e0e0e0;
+  --color-surface: #fafafa;
+  --color-card: #ffffff;
+  --color-accent: #1d9bf0;
+
+  --radius-card: 20px;
+  --radius-inner: 13px;
+
+  /* Layered, barely-there shadows (V1 signature). */
+  --shadow-card: 0 0.6px 1.6px -1.5px rgb(0 0 0 / 0.17),
+    0 2.3px 6px -3px rgb(0 0 0 / 0.14), 0 10px 26px -4.5px rgb(0 0 0 / 0.02);
+  --shadow-lift: 0 0.6px 0.6px -1.25px rgb(0 0 0 / 0.18),
+    0 2.3px 2.3px -2.5px rgb(0 0 0 / 0.16), 0 10px 10px -3.75px rgb(0 0 0 / 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-card);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+/* Sections scroll to rest below the floating navbar. */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Dashed hairline separator between sections — a V1 signature detail. */
+.separator-dashed {
+  border-top: 1px dashed rgb(149 149 149 / 0.25);
+}
+
+/* Visible keyboard focus without shifting layout. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
