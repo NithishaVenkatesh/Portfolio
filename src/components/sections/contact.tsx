@@ -12,7 +12,7 @@ export function ContactSection() {
             Let&apos;s build something.
           </h3>
           <p className="mt-2 max-w-prose text-[14px] leading-relaxed text-soft">
-            The fastest way to reach me is email — I read everything. For
+            The fastest way to reach me is email, and I read everything. For
             anything else, my socials are below.
           </p>
 

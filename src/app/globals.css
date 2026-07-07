@@ -55,7 +55,7 @@ section[id] {
   scroll-margin-top: 96px;
 }
 
-/* Dashed hairline separator between sections — a V1 signature detail. */
+/* Dashed hairline separator between sections, a V1 signature detail. */
 .separator-dashed {
   border-top: 1px dashed rgb(149 149 149 / 0.25);
 }

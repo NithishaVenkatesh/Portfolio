@@ -1,6 +1,6 @@
 /**
  * Single source of truth for all portfolio content.
- * Content is sourced from the resume — edit here, never inside components.
+ * Content is sourced from the resume. Edit here, never inside components.
  */
 
 export type SocialLink = {
@@ -74,7 +74,7 @@ export const site = {
   headline:
     "Applied AI Engineer specializing in agentic systems and production-grade RAG.",
   intro:
-    "Applied AI Engineer specializing in agentic systems and production-grade RAG, with a backend-first focus on FastAPI, data pipelines, and LLM orchestration (LangGraph, OpenAI Agentic SDK). Built a multi-agent tutoring platform — winner of the Microsoft Skill Fest Student Award — with a hardened safety layer and citation-grounded retrieval, and co-built NextHire AI, a SaaS agentic developer-evaluation product.",
+    "Applied AI Engineer specializing in agentic systems and production-grade RAG, with a backend-first focus on FastAPI, data pipelines, and LLM orchestration (LangGraph, OpenAI Agentic SDK). Built a multi-agent tutoring platform (winner of the Microsoft Skill Fest Student Award) with a hardened safety layer and citation-grounded retrieval, and co-built NextHire AI, a SaaS agentic developer-evaluation product.",
   email: "nithishaleni1806@gmail.com",
   phone: "+91 6379 074 239",
   resumeUrl: "/resume.pdf",
@@ -85,12 +85,12 @@ export const experience: Experience[] = [
   {
     role: "Artificial Intelligence Engineer",
     company: "iQube",
-    period: "June 2024 — Present",
+    period: "June 2024 - Present",
     summary:
       "Designing, developing, and deploying scalable end-to-end AI systems spanning machine learning, deep learning, and generative AI.",
     highlights: [
       "Built production-ready FastAPI-based platforms with RAG pipelines, vector databases, hybrid retrieval, cross-encoder reranking, LLM integration, and robust observability via latency tracing and structured logging.",
-      "Architected end-to-end data pipelines for preprocessing, EDA, dimensionality reduction, and model optimization — delivering time-series forecasting, risk classification, and financial analytics models on large-scale datasets for real-world decision-making.",
+      "Architected end-to-end data pipelines for preprocessing, EDA, dimensionality reduction, and model optimization, delivering time-series forecasting, risk classification, and financial analytics models on large-scale datasets for real-world decision-making.",
     ],
   },
 ];
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     tagline: "Dev Evaluation Platform for the Agentic Era",
     kind: "Product",
     description:
-      "A SaaS platform that evaluates developers by assigning a real, role-specific production bug to fix in their own IDE — capturing full session trajectories (every prompt, edit, command, run) for evidence-based scoring.",
+      "A SaaS platform that evaluates developers by assigning a real, role-specific production bug to fix in their own IDE, capturing full session trajectories (every prompt, edit, command, run) for evidence-based scoring.",
     highlights: [
       "Engineered a containerized GitHub indexer with a multi-gate filtering pipeline, Levenshtein-based tech-stack extraction, paid-API exclusion, and CI/CD YAML-based local-runnability checks, persisting qualified repositories to Neon Postgres for SQL retrieval against any job description.",
       "Built an evidence-grounded agentic evaluation pipeline generating a per-competency scorecard across 11 clusters, with every score grounded in the candidate's actual session rather than pass/fail signals.",
@@ -125,8 +125,8 @@ export const projects: Project[] = [
     description:
       "A red-team-hardened, multi-agent tutoring platform on Microsoft Foundry covering learning-path curation, capacity-aware study planning, citation-grounded tutoring, and graded assessments. Winner of the Microsoft Agent League Hackathon (Student Award).",
     highlights: [
-      "Designed a 3-node reasoning pipeline (gate → router → answer) streaming 12 typed SSE event types with a phase-by-phase trace exposing model, tier, latency, confidence, and grounding source — making reasoning inspectable rather than hidden in a chat window.",
-      "Engineered a 5-layer defense-in-depth safety gate (regex and deterministic heuristics handling 24 homoglyphs, Groq Prompt Guard 2, Azure FAST classifier, Azure RAI filter), validated across 13 adversarial batteries and 232 cases — 100% direct block-rate and 96% converter-sweep block-rate with zero over-refusal regression.",
+      "Designed a 3-node reasoning pipeline (gate → router → answer) streaming 12 typed SSE event types with a phase-by-phase trace exposing model, tier, latency, confidence, and grounding source, making reasoning inspectable rather than hidden in a chat window.",
+      "Engineered a 5-layer defense-in-depth safety gate (regex and deterministic heuristics handling 24 homoglyphs, Groq Prompt Guard 2, Azure FAST classifier, Azure RAI filter), validated across 13 adversarial batteries and 232 cases, achieving a 100% direct block-rate and 96% converter-sweep block-rate with zero over-refusal regression.",
       "Built hybrid Foundry IQ grounding (Azure AI Search agentic retrieval plus IDF-gated lexical fallback), Azure AI Evaluation scoring, and a re-dispatch reflection loop ensuring every cited claim is verifiable.",
       "Implemented a 4-tier model fallback chain with per-provider circuit breakers, exponential-backoff retry, and a typed unsafe-vs-unreachable distinction so safety refusals never silently fail open.",
     ],
@@ -152,7 +152,7 @@ export const projects: Project[] = [
     description:
       "A multi-service RAG system ingesting structured knowledge from Confluence, delivering citable responses through reliability-first validation layers.",
     highlights: [
-      "Built a fault-tolerant ingestion pipeline with staged indexing, webhook-driven updates, retry logic, and idempotent upserts — preventing index corruption during iterative knowledge updates.",
+      "Built a fault-tolerant ingestion pipeline with staged indexing, webhook-driven updates, retry logic, and idempotent upserts, preventing index corruption during iterative knowledge updates.",
       "Implemented hybrid retrieval (vector search + cross-encoder reranking) with intent-aware filtering, improving retrieval precision while reducing redundant inference calls.",
       "Instrumented stage-level latency decomposition (~7s local end-to-end) across retrieval, reranking, generation, and validation using LangSmith trace pipelines.",
     ],
@@ -216,7 +216,7 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
-/** Logo tiles for the "TECH stacks" grid — carried over from the V1 site's visual identity. */
+/** Logo tiles for the "TECH stacks" grid, carried over from the V1 site's visual identity. */
 export const tools: Tool[] = [
   { name: "Python", logo: "/tech/python.jpg", url: "https://www.python.org/" },
   {
@@ -300,17 +300,17 @@ export const tools: Tool[] = [
 
 export const achievements: Achievement[] = [
   {
-    title: "Winner — Microsoft Agent League Hackathon",
+    title: "Winner, Microsoft Agent League Hackathon",
     detail: "Student Award, Project Athenaeum",
     year: "2026",
   },
   {
-    title: "Achiever's Award — NIDAR",
+    title: "Achiever's Award, NIDAR",
     detail: "National Innovation Challenge for Drone Application & Research",
     year: "2026",
   },
   {
-    title: "Finalist — Zoho Creator Hackathon",
+    title: "Finalist, Zoho Creator Hackathon",
     detail: "Zoho Corporation",
     year: "2025",
   },

@@ -29,7 +29,7 @@ export function EducationSection() {
       </Reveal>
 
       {/* TODO: add a Certifications block here once certifications exist in
-          src/data/site.ts — the resume currently lists none. */}
+          src/data/site.ts. The resume currently lists none. */}
     </Section>
   );
 }
