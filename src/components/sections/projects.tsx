@@ -42,7 +42,7 @@ export function ProjectsSection() {
 
   return (
     <Section id="project" title="Selected Projects">
-      <Stagger className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <Stagger className="flex flex-col gap-5">
         {projects.map((project) => (
           <StaggerItem key={project.title} className="h-full">
             <ProjectCard
