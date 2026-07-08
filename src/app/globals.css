@@ -60,6 +60,38 @@ section[id] {
   border-top: 1px dashed rgb(149 149 149 / 0.25);
 }
 
+/* Logo marquee: track holds two copies of the list; shifting by -50% loops seamlessly. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 36s linear infinite;
+  width: max-content;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee {
+    overflow-x: auto;
+  }
+}
+
 /* Visible keyboard focus without shifting layout. */
 :focus-visible {
   outline: 2px solid var(--color-accent);

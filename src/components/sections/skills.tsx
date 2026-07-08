@@ -1,81 +1,150 @@
-import Image from "next/image";
+import {
+  Boxes,
+  BrainCircuit,
+  Code2,
+  Container,
+  Server,
+  type LucideIcon,
+} from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SkillTag } from "@/components/skill-tag";
-import { Stagger, StaggerItem, HoverLift } from "@/components/motion";
-import { skillGroups, tools, type Tool } from "@/data/site";
+import { TechMarquee } from "@/components/tech-marquee";
+import { Stagger, StaggerItem } from "@/components/motion";
+import { skillGroups, skillUsage } from "@/data/site";
+import { cn } from "@/lib/utils";
 
-function ToolTile({ tool }: { tool: Tool }) {
-  const inner = (
-    <HoverLift className="h-full">
-      <div className="flex h-full flex-col items-center gap-2.5 rounded-card border border-line bg-card p-4 shadow-(--shadow-card) transition-shadow duration-300 hover:shadow-(--shadow-lift)">
-        {tool.logo ? (
-          <Image
-            src={tool.logo}
-            alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-[10px] object-contain"
-          />
-        ) : (
+const GROUP_ICONS: Record<string, LucideIcon> = {
+  "Programming Languages": Code2,
+  "AI & LLM Systems": BrainCircuit,
+  "AI Tooling & Models": Boxes,
+  Backend: Server,
+  "Infrastructure & DevOps": Container,
+};
+
+function groupByTitle(title: string) {
+  const group = skillGroups.find((g) => g.title === title);
+  return group?.skills ?? [];
+}
+
+function CardShell({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const Icon = GROUP_ICONS[title];
+  return (
+    <div
+      className={cn(
+        "flex h-full flex-col rounded-card border border-line bg-card p-5 shadow-(--shadow-card)",
+        className,
+      )}
+    >
+      <div className="flex items-center gap-2.5">
+        {Icon && (
           <span
             aria-hidden
-            className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-line bg-surface font-mono text-[15px] font-semibold text-soft"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-line bg-surface text-soft"
           >
-            {tool.name.charAt(0).toUpperCase()}
+            <Icon size={15} />
           </span>
         )}
-        <span className="text-center text-[12px] font-medium leading-tight text-soft">
-          {tool.name}
-        </span>
+        <h3 className="font-mono text-[12px] font-medium uppercase tracking-[0.06em] text-soft">
+          {title}
+        </h3>
       </div>
-    </HoverLift>
-  );
-
-  if (!tool.url) return inner;
-
-  return (
-    <a
-      href={tool.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={tool.name}
-      className="block h-full"
-    >
-      {inner}
-    </a>
+      <div className="mt-4 flex-1">{children}</div>
+    </div>
   );
 }
 
+function ChipCard({ title }: { title: string }) {
+  return (
+    <CardShell title={title}>
+      <div className="flex flex-wrap gap-1.5">
+        {groupByTitle(title).map((skill) => (
+          <SkillTag key={skill} skill={skill} />
+        ))}
+      </div>
+    </CardShell>
+  );
+}
+
+/**
+ * Bento layout: a featured AI-systems card, a typographic languages card
+ * with real shipped-in provenance, themed capability cards, and the
+ * toolbox as a counter-scrolling logo marquee.
+ */
 export function SkillsSection() {
   return (
     <Section id="stacks-skills" title="Stack & Skills">
-      <Stagger className="flex flex-col gap-6">
-        {skillGroups.map((group) => (
-          <StaggerItem key={group.title}>
-            <h3 className="font-mono text-[12.5px] font-medium uppercase tracking-[0.06em] text-faint">
-              {group.title}
-            </h3>
-            <div className="mt-2.5 flex flex-wrap gap-1.5">
-              {group.skills.map((skill) => (
+      <Stagger className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {/* Featured: the core competency, full width */}
+        <StaggerItem className="sm:col-span-2">
+          <CardShell title="AI & LLM Systems" className="border-accent/20">
+            <p className="font-display text-[19px] font-semibold leading-snug tracking-tight">
+              Agents, retrieval, guardrails, evaluation.
+              <span className="text-soft"> The layer where LLMs become systems.</span>
+            </p>
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {groupByTitle("AI & LLM Systems").map((skill) => (
                 <SkillTag key={skill} skill={skill} />
               ))}
             </div>
-          </StaggerItem>
-        ))}
-      </Stagger>
+          </CardShell>
+        </StaggerItem>
 
-      <div className="mt-12">
-        <h3 className="font-mono text-[12.5px] font-medium uppercase tracking-[0.06em] text-faint">
-          Tech Stacks
-        </h3>
-        <Stagger className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
-          {tools.map((tool) => (
-            <StaggerItem key={tool.name} className="h-full">
-              <ToolTile tool={tool} />
-            </StaggerItem>
-          ))}
-        </Stagger>
-      </div>
+        {/* Languages: typographic, with real shipped-in provenance */}
+        <StaggerItem className="h-full">
+          <CardShell title="Programming Languages">
+            <ul className="flex h-full flex-col justify-between gap-4">
+              {groupByTitle("Programming Languages").map((language) => (
+                <li key={language}>
+                  <p className="font-display text-[18px] font-semibold tracking-tight">
+                    {language}
+                  </p>
+                  {skillUsage[language] && (
+                    <p className="mt-0.5 font-mono text-[11px] leading-relaxed text-faint">
+                      {skillUsage[language].join(" · ")}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </CardShell>
+        </StaggerItem>
+
+        <StaggerItem className="h-full">
+          <ChipCard title="Backend" />
+        </StaggerItem>
+
+        <StaggerItem className="h-full">
+          <ChipCard title="AI Tooling & Models" />
+        </StaggerItem>
+
+        <StaggerItem className="h-full">
+          <ChipCard title="Infrastructure & DevOps" />
+        </StaggerItem>
+
+        {/* The toolbox marquee, full width */}
+        <StaggerItem className="sm:col-span-2">
+          <div className="pt-3">
+            <h3 className="font-mono text-[12px] font-medium uppercase tracking-[0.06em] text-soft">
+              The Toolbox
+            </h3>
+            <p className="mt-1 text-[12.5px] text-faint">
+              Hover to pause. Tags with a blue dot above reveal where each
+              skill shipped.
+            </p>
+            <div className="mt-4">
+              <TechMarquee />
+            </div>
+          </div>
+        </StaggerItem>
+      </Stagger>
     </Section>
   );
 }
