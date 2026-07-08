@@ -403,7 +403,7 @@ export const stats: Stat[] = [
   { value: 4, label: "AI products and platforms shipped" },
   { value: 232, label: "adversarial cases hardened against" },
   { value: 611, label: "tests behind a single system" },
-  { value: 3, label: "hackathon honors" },
+  { value: 2, label: "hackathon honors" },
 ];
 
 export const skillGroups: SkillGroup[] = [
