@@ -16,7 +16,7 @@ import {
   SquareArrowDown,
 } from "lucide-react";
 import { projects, site, skillGroups } from "@/data/site";
-import { cn } from "@/lib/utils";
+import { cn, projectSlug } from "@/lib/utils";
 
 type PaletteItem = {
   id: string;
@@ -74,11 +74,13 @@ export function CommandPalette() {
       id: `project-${project.title}`,
       group: "Projects",
       title: project.title,
-      hint: project.tagline,
+      hint: "Open case study",
       keywords:
         `${project.title} ${project.tagline} ${project.stack.join(" ")}`.toLowerCase(),
       icon: FolderGit2,
-      run: () => scrollToSection("project"),
+      run: () => {
+        window.location.hash = projectSlug(project.title);
+      },
     }));
 
     const skillItems: PaletteItem[] = skillGroups.flatMap((group) =>
