@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Trophy } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Stagger, StaggerItem } from "@/components/motion";
@@ -14,7 +15,17 @@ export function AchievementsSection() {
                 aria-hidden
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-soft"
               >
-                <Trophy size={15} />
+                {achievement.title.includes("Microsoft") ? (
+                  <Image
+                    src="/microsoft.svg"
+                    alt=""
+                    width={15}
+                    height={15}
+                    className="h-[15px] w-[15px]"
+                  />
+                ) : (
+                  <Trophy size={15} />
+                )}
               </span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-3">

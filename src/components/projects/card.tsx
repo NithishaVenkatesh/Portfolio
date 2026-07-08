@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -59,9 +60,16 @@ export function ProjectCard({
           <DiagramPreview project={project} />
         )}
         {project.award && (
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-2.5 py-1.5 font-mono text-[10.5px] font-semibold leading-none text-white shadow-(--shadow-lift)">
-            <Trophy size={10} aria-hidden />
+          <span className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-white px-2.5 py-1.5 font-mono text-[10.5px] font-semibold leading-none text-ink shadow-(--shadow-lift)">
+            <Image
+              src="/microsoft.svg"
+              alt=""
+              width={11}
+              height={11}
+              className="h-[11px] w-[11px]"
+            />
             {project.award}
+            <Trophy size={10} aria-hidden className="text-amber-600" />
           </span>
         )}
       </div>

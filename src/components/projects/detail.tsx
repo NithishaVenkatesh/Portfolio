@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
@@ -145,9 +146,16 @@ export function ProjectDetail({
             transition={{ duration: 0.4, ease: EASE }}
           >
             {project.award && (
-              <span className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-3 py-1.5 font-mono text-[11.5px] font-semibold leading-none text-white shadow-(--shadow-card)">
-                <Trophy size={12} aria-hidden />
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-white px-3 py-1.5 font-mono text-[11.5px] font-semibold leading-none text-ink shadow-(--shadow-card)">
+                <Image
+                  src="/microsoft.svg"
+                  alt=""
+                  width={13}
+                  height={13}
+                  className="h-[13px] w-[13px]"
+                />
                 {project.award}
+                <Trophy size={12} aria-hidden className="text-amber-600" />
               </span>
             )}
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
