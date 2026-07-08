@@ -9,12 +9,21 @@ export function ContactSection() {
     <Section id="contact" title="Contact">
       <Reveal>
         <div className="rounded-card border border-line bg-surface p-6 sm:p-8">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-3 py-1.5 font-mono text-[11px] font-medium text-emerald-700">
+            <span className="relative flex h-1.5 w-1.5" aria-hidden>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            </span>
+            {site.availability}
+          </div>
           <h3 className="font-display text-[18px] font-semibold tracking-tight">
-            Let&apos;s build something.
+            Sound relevant? Let&apos;s talk.
           </h3>
           <p className="mt-2 max-w-prose text-[14px] leading-relaxed text-soft">
-            The fastest way to reach me is email, and I read everything. For
-            anything else, my socials are below.
+            I&apos;m looking for my next role building AI systems that ship. If
+            the work here feels relevant to what your team is building, I&apos;d
+            love to hear from you. Email is the fastest way, and I read
+            everything.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">

@@ -40,6 +40,16 @@ export function Hero() {
   return (
     <section id="hero" aria-label="Introduction" className="pb-14 pt-28 sm:pb-16 sm:pt-32">
       <Enter delay={0}>
+        <a
+          href="#contact"
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-3 py-1.5 font-mono text-[11.5px] font-medium text-emerald-700 transition-colors duration-200 hover:border-emerald-500/50"
+        >
+          <span className="relative flex h-1.5 w-1.5" aria-hidden>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          </span>
+          {site.availability}
+        </a>
         <h1 className="flex items-center gap-1.5 text-[22px] font-bold leading-tight tracking-tight">
           {site.name}
           <BadgeCheck
