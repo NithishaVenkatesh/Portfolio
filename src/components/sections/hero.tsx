@@ -65,7 +65,16 @@ export function Hero() {
 
       <Enter delay={0.15} className="mt-5">
         <p className="max-w-prose text-[15px] leading-relaxed text-soft">
-          {site.intro}
+          {site.intro.split(site.introHighlight).map((part, index, parts) => (
+            <span key={index}>
+              {part}
+              {index < parts.length - 1 && (
+                <mark className="rounded bg-amber-500/15 px-1 py-0.5 font-medium text-amber-800">
+                  {site.introHighlight}
+                </mark>
+              )}
+            </span>
+          ))}
         </p>
       </Enter>
 
