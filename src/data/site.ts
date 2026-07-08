@@ -27,6 +27,7 @@ export type ProjectMetric = {
 
 export type ProjectMedia =
   | { type: "video"; src: string; label: string }
+  | { type: "youtube"; id: string; title: string; poster: string }
   | {
       type: "image";
       src: string;
@@ -168,6 +169,12 @@ export const projects: Project[] = [
         "Streamed SSE trace",
       ],
     },
+    media: {
+      type: "youtube",
+      id: "JJABHMgUSmg",
+      title: "Athenaeum demo",
+      poster: "/media/athenaeum-poster.jpg",
+    },
     highlights: [
       "Designed a 3-node reasoning pipeline (gate → router → answer) streaming 12 typed SSE event types with a phase-by-phase trace exposing model, tier, latency, confidence, and grounding source, making reasoning inspectable rather than hidden in a chat window.",
       "Engineered a 5-layer defense-in-depth safety gate (regex and deterministic heuristics handling 24 homoglyphs, Groq Prompt Guard 2, Azure FAST classifier, Azure RAI filter), validated across 13 adversarial batteries and 232 cases, achieving a 100% direct block-rate and 96% converter-sweep block-rate with zero over-refusal regression.",
@@ -195,7 +202,7 @@ export const projects: Project[] = [
       },
       {
         label: "Demo video",
-        href: "https://drive.google.com/drive/folders/1zazruW7PRIStqxByv-luRYTnXf_uCSo5?usp=sharing",
+        href: "https://www.youtube.com/watch?v=JJABHMgUSmg",
         kind: "video",
       },
       {

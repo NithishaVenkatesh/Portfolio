@@ -13,6 +13,7 @@ import {
   Trophy,
 } from "lucide-react";
 import { ArchitectureFlow } from "@/components/architecture-flow";
+import { YouTubeEmbed } from "@/components/youtube-embed";
 import { Tag } from "@/components/ui/tag";
 import { cn } from "@/lib/utils";
 import type { Project, ProjectLink, ProjectMedia } from "@/data/site";
@@ -25,6 +26,12 @@ const LINK_ICONS = {
 } as const;
 
 function MediaBlock({ media, title }: { media: ProjectMedia; title: string }) {
+  if (media.type === "youtube") {
+    return (
+      <YouTubeEmbed id={media.id} title={media.title} poster={media.poster} />
+    );
+  }
+
   if (media.type === "video") {
     return (
       <div className="overflow-hidden rounded-[13px] border border-line bg-surface">
