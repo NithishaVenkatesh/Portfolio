@@ -48,6 +48,8 @@ export type Project = {
   kind: "Product" | "Project";
   period?: string;
   featured?: boolean;
+  /** Award or honor, rendered as a trophy badge on the card. */
+  award?: string;
   description: string;
   /** The story: why it exists, and what makes it technically interesting. */
   why: string;
@@ -83,12 +85,6 @@ export type Stat = {
   value: number;
   suffix?: string;
   label: string;
-};
-
-export type MiniBuild = {
-  title: string;
-  description: string;
-  links: ProjectLink[];
 };
 
 const socials: SocialLink[] = [
@@ -145,62 +141,14 @@ export const experience: Experience[] = [
 
 export const projects: Project[] = [
   {
-    title: "NextHire AI",
-    tagline: "Dev Evaluation Platform for the Agentic Era",
-    kind: "Product",
-    featured: true,
-    description:
-      "A SaaS platform that evaluates developers by assigning a real, role-specific production bug to fix in their own IDE, capturing full session trajectories (every prompt, edit, command, run) for evidence-based scoring.",
-    why: "Resume screens and leetcode rounds don't show how engineers actually work with AI tools. NextHire hands candidates a real production bug, in a real codebase, with their own AI tooling, and watches how they reason instead of whether they pass.",
-    edge: "The hard part is supply: a containerized GitHub indexer turns open-source repositories into runnable, role-specific bug assignments through multi-gate filtering, Levenshtein-based tech-stack extraction, and CI/CD-based local-runnability checks. Every scorecard band traces back to a specific moment in the candidate's session.",
-    metrics: [
-      { value: "11", label: "competency clusters scored per candidate" },
-      { value: "5 min", label: "from session to full scorecard" },
-      { value: "100%", label: "of scores grounded in session evidence" },
-    ],
-    architecture: {
-      label: "Evaluation pipeline",
-      nodes: [
-        "Job description",
-        "GitHub indexer",
-        "Multi-gate filtering",
-        "Neon Postgres",
-        "IDE session capture",
-        "Agentic evaluation",
-        "Evidence scorecard",
-      ],
-    },
-    media: {
-      type: "image",
-      src: "/media/nexthire.jpg",
-      alt: "NextHire AI landing page: Hire AI-native engineers shipping outcomes",
-      width: 1200,
-      height: 630,
-      href: "https://nexthire-ai.tech",
-    },
-    highlights: [
-      "Engineered a containerized GitHub indexer with a multi-gate filtering pipeline, Levenshtein-based tech-stack extraction, paid-API exclusion, and CI/CD YAML-based local-runnability checks, persisting qualified repositories to Neon Postgres for SQL retrieval against any job description.",
-      "Built an evidence-grounded agentic evaluation pipeline generating a per-competency scorecard across 11 clusters, with every score grounded in the candidate's actual session rather than pass/fail signals.",
-      "Integrated Groq inference to power a low-latency AI assistant supporting recruiters throughout the hiring workflow.",
-    ],
-    stack: [
-      "Next.js",
-      "Convex",
-      "Docker",
-      "Neon Postgres",
-      "OpenAI Agentic SDK",
-      "Kimi API",
-      "Groq",
-    ],
-    links: [{ label: "Live", href: "https://nexthire-ai.tech", kind: "live" }],
-  },
-  {
     title: "Athenaeum",
     tagline: "Multi-Agent Learning System",
     kind: "Project",
+    featured: true,
+    award: "Winner · Microsoft Skill Fest Hackathon",
     description:
-      "A red-team-hardened, multi-agent tutoring platform on Microsoft Foundry covering learning-path curation, capacity-aware study planning, citation-grounded tutoring, and graded assessments. Winner of the Microsoft Agent League Hackathon (Student Award).",
-    why: "Built for the Microsoft Agents League Reasoning Agents track on one stance: routing, gating, grounding, and grading are decisions, not prose. They run at temperature 0 and are checked by code, so the model narrates outcomes it cannot fabricate.",
+      "A red-team-hardened, multi-agent tutoring platform on Microsoft Foundry covering learning-path curation, capacity-aware study planning, citation-grounded tutoring, and graded assessments.",
+    why: "Built for the Microsoft hackathon's Reasoning Agents track on one stance: routing, gating, grounding, and grading are decisions, not prose. They run at temperature 0 and are checked by code, so the model narrates outcomes it cannot fabricate.",
     edge: "Every turn streams through an inspectable reasoning pipeline: the model, tier, latency, confidence, and grounding source are visible per phase instead of hidden behind a chat bubble. The safety gate survived roughly 464 live adversarial runs across two full rounds without a single over-refusal regression.",
     metrics: [
       { value: "232", label: "adversarial cases across 13 batteries" },
@@ -258,6 +206,55 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "NextHire AI",
+    tagline: "Dev Evaluation Platform for the Agentic Era",
+    kind: "Product",
+    description:
+      "A SaaS platform that evaluates developers by assigning a real, role-specific production bug to fix in their own IDE, capturing full session trajectories (every prompt, edit, command, run) for evidence-based scoring.",
+    why: "Resume screens and leetcode rounds don't show how engineers actually work with AI tools. NextHire hands candidates a real production bug, in a real codebase, with their own AI tooling, and watches how they reason instead of whether they pass.",
+    edge: "The hard part is supply: a containerized GitHub indexer turns open-source repositories into runnable, role-specific bug assignments through multi-gate filtering, Levenshtein-based tech-stack extraction, and CI/CD-based local-runnability checks. Every scorecard band traces back to a specific moment in the candidate's session.",
+    metrics: [
+      { value: "11", label: "competency clusters scored per candidate" },
+      { value: "5-min", label: "scorecard for every session" },
+      { value: "100%", label: "of scores grounded in session evidence" },
+    ],
+    architecture: {
+      label: "Evaluation pipeline",
+      nodes: [
+        "Job description",
+        "GitHub indexer",
+        "Multi-gate filtering",
+        "Neon Postgres",
+        "IDE session capture",
+        "Agentic evaluation",
+        "Evidence scorecard",
+      ],
+    },
+    media: {
+      type: "image",
+      src: "/media/nexthire.jpg",
+      alt: "NextHire AI landing page: Hire AI-native engineers shipping outcomes",
+      width: 1200,
+      height: 630,
+      href: "https://nexthire-ai.tech",
+    },
+    highlights: [
+      "Engineered a containerized GitHub indexer with a multi-gate filtering pipeline, Levenshtein-based tech-stack extraction, paid-API exclusion, and CI/CD YAML-based local-runnability checks, persisting qualified repositories to Neon Postgres for SQL retrieval against any job description.",
+      "Built an evidence-grounded agentic evaluation pipeline generating a per-competency scorecard across 11 clusters, with every score grounded in the candidate's actual session rather than pass/fail signals.",
+      "Integrated Groq inference to power a low-latency AI assistant supporting recruiters throughout the hiring workflow.",
+    ],
+    stack: [
+      "Next.js",
+      "Convex",
+      "Docker",
+      "Neon Postgres",
+      "OpenAI Agentic SDK",
+      "Kimi API",
+      "Groq",
+    ],
+    links: [{ label: "Live", href: "https://nexthire-ai.tech", kind: "live" }],
+  },
+  {
     title: "Nucleus AI",
     tagline: "Enterprise Knowledge Platform",
     kind: "Project",
@@ -268,7 +265,7 @@ export const projects: Project[] = [
     metrics: [
       { value: "~7s", label: "local end-to-end query latency" },
       { value: "6", label: "instrumented pipeline stages per query" },
-      { value: "3", label: "vector indexes fused at query time" },
+      { value: "3", label: "vector indexes: pages, chunks, images" },
     ],
     architecture: {
       label: "Query pipeline",
@@ -351,47 +348,6 @@ export const projects: Project[] = [
       {
         label: "GitHub",
         href: "https://github.com/NithishaVenkatesh/AutoDocs_v1",
-        kind: "github",
-      },
-    ],
-  },
-];
-
-/** Smaller public builds, shown as a compact strip below the main showcases. */
-export const miniBuilds: MiniBuild[] = [
-  {
-    title: "Quirk",
-    description:
-      "GitHub automation for product teams: turns GitHub activity into real execution across Slack and Asana using a visual workflow builder and typed backend services.",
-    links: [
-      { label: "Live", href: "https://quirk-v2.vercel.app", kind: "live" },
-      {
-        label: "GitHub",
-        href: "https://github.com/theCodeForgerHQ/Quirk-V3",
-        kind: "github",
-      },
-    ],
-  },
-  {
-    title: "Neuronote",
-    description:
-      "An AI-native note system that atomizes raw thought dumps into clean, typed notes with semantic embeddings and low-friction retrieval.",
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/theCodeForgerHQ/Neuronote",
-        kind: "github",
-      },
-    ],
-  },
-  {
-    title: "Glide",
-    description:
-      "A lightweight macOS menu-bar utility that controls the mouse cursor with hand gestures captured through the built-in webcam.",
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/theCodeForgerHQ/Glide-MacOS",
         kind: "github",
       },
     ],
@@ -566,7 +522,7 @@ export const tools: Tool[] = [
 
 export const achievements: Achievement[] = [
   {
-    title: "Winner, Microsoft Agent League Hackathon",
+    title: "Winner, Microsoft Skill Fest Hackathon",
     detail: "Student Award, Project Athenaeum",
     year: "2026",
   },

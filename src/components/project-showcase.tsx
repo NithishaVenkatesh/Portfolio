@@ -10,6 +10,7 @@ import {
   Github,
   PlayCircle,
   Sparkles,
+  Trophy,
 } from "lucide-react";
 import { ArchitectureFlow } from "@/components/architecture-flow";
 import { Tag } from "@/components/ui/tag";
@@ -195,9 +196,18 @@ export function ProjectShowcase({ project }: { project: Project }) {
       className={cn(
         "rounded-card border border-line bg-card p-5 shadow-(--shadow-card) transition-shadow duration-300 hover:shadow-(--shadow-lift) sm:p-6",
         project.featured &&
-          "border-accent/25 shadow-[0_0_0_3px_rgba(29,155,240,0.06),var(--shadow-card)]",
+          (project.award
+            ? "border-amber-500/30 shadow-[0_0_0_3px_rgba(245,158,11,0.07),var(--shadow-card)]"
+            : "border-accent/25 shadow-[0_0_0_3px_rgba(29,155,240,0.06),var(--shadow-card)]"),
       )}
     >
+      {project.award && (
+        <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/8 px-2.5 py-1.5 font-mono text-[11px] font-medium leading-none text-amber-700">
+          <Trophy size={11} aria-hidden />
+          {project.award}
+        </span>
+      )}
+
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="font-display text-[17px] font-semibold leading-snug tracking-tight">
@@ -208,7 +218,7 @@ export function ProjectShowcase({ project }: { project: Project }) {
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-1.5">
-          {project.featured && (
+          {project.featured && !project.award && (
             <span className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-accent/8 px-2.5 py-1 font-mono text-[11px] font-medium leading-none text-accent">
               <Sparkles size={10} aria-hidden />
               Featured
