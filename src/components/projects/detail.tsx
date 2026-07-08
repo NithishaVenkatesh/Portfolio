@@ -145,7 +145,7 @@ export function ProjectDetail({
             transition={{ duration: 0.4, ease: EASE }}
           >
             {project.award && (
-              <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/8 px-3 py-1.5 font-mono text-[11.5px] font-medium leading-none text-amber-700">
+              <span className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-3 py-1.5 font-mono text-[11.5px] font-semibold leading-none text-white shadow-(--shadow-card)">
                 <Trophy size={12} aria-hidden />
                 {project.award}
               </span>

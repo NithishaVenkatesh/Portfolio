@@ -59,7 +59,7 @@ export function ProjectCard({
           <DiagramPreview project={project} />
         )}
         {project.award && (
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-card/90 px-2.5 py-1 font-mono text-[10.5px] font-medium leading-none text-amber-700 backdrop-blur-sm">
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-2.5 py-1.5 font-mono text-[10.5px] font-semibold leading-none text-white shadow-(--shadow-lift)">
             <Trophy size={10} aria-hidden />
             {project.award}
           </span>
