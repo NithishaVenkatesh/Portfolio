@@ -18,6 +18,9 @@ export type Experience = {
   logo?: string;
   current?: boolean;
   description: string;
+  highlights: string[];
+  /** Focus-area chips rendered under the entry. */
+  focus: string[];
 };
 
 export type ProjectMetric = {
@@ -128,45 +131,26 @@ export const site = {
 
 export const experience: Experience[] = [
   {
-    role: "AI Engineer",
-    company: "iQube Innovation Center",
-    period: "Present",
+    role: "Artificial Intelligence Engineer",
+    company: "iQube",
+    period: "June 2024 - Present",
     logo: "/companies/iqube.png",
     current: true,
     description:
-      "Designed and deployed production-ready AI systems across diverse innovation domains, building scalable end-to-end ML pipelines using machine learning, deep learning, and generative AI, while architecting robust platforms that translate complex R&D into measurable business impact with strong focus on scalability, reliability, and seamless real-world integration.",
-  },
-  {
-    role: "Startup Accelerator Exchange Program",
-    company: "Forge Innovation & Ventures",
-    period: "Aug 2025 - Jan 2026",
-    logo: "/companies/forge.jpg",
-    description:
-      "Built and iterated early-stage AI systems under compressed execution cycles, translating venture concepts into deployable architectures spanning RAG pipelines, retrieval workflows, and inference layers while balancing rapid iteration with system reliability and production constraints.",
-  },
-  {
-    role: "AI Engineer",
-    company: "HyperVerge",
-    period: "Feb 2025 - Jul 2025",
-    logo: "/companies/hyperverge.png",
-    description:
-      "Led the development of AI-driven financial analytics solutions on large-scale transaction datasets, building time-series forecasting and risk classification models, while designing end-to-end data pipelines spanning preprocessing, EDA, dimensionality reduction, and model optimization to deliver statistically robust predictive systems for credit health assessment and risk modeling.",
-  },
-  {
-    role: "Machine Learning Intern",
-    company: "iNeuron.ai",
-    period: "Dec 2024 - Feb 2025",
-    logo: "/companies/ineuron.png",
-    description:
-      "Developed a store sales forecasting system using historical data with advanced preprocessing and feature engineering to model trends and seasonality; trained a Random Forest regressor and deployed it as an interactive Streamlit app for real-time predictions and business insights.",
-  },
-  {
-    role: "AI Intern",
-    company: "Robolog Automation",
-    period: "Jun 2024 - Nov 2024",
-    logo: "/companies/robolog.jpg",
-    description:
-      "Built AI-driven predictive maintenance systems using LSTM Autoencoders and advanced time-series analysis to detect anomalies in IoT sensor streams and forecast equipment degradation, while developing end-to-end pipelines with robust feature engineering, validation frameworks, and intelligent alert mechanisms to convert model outputs into actionable maintenance insights and operational optimization.",
+      "Designing, developing, and deploying scalable end-to-end AI systems spanning machine learning, deep learning, and generative AI, translating complex R&D into production platforms with a strong focus on scalability, reliability, and real-world integration.",
+    highlights: [
+      "Built production-ready FastAPI-based platforms with RAG pipelines, vector databases, hybrid retrieval, cross-encoder reranking, LLM integration, and robust observability via latency tracing and structured logging.",
+      "Architected end-to-end data pipelines for preprocessing, EDA, dimensionality reduction, and model optimization, delivering time-series forecasting, risk classification, and financial analytics models on large-scale datasets for real-world decision-making.",
+    ],
+    focus: [
+      "Generative AI",
+      "RAG Pipelines",
+      "Hybrid Retrieval",
+      "LLM Integration",
+      "Time-series Forecasting",
+      "Risk Classification",
+      "Observability",
+    ],
   },
 ];
 
