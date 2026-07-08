@@ -13,11 +13,11 @@ export type SocialLink = {
 export type Experience = {
   role: string;
   company: string;
-  companyUrl?: string;
   period: string;
-  location?: string;
-  summary: string;
-  highlights: string[];
+  /** Path under /public. Omit to render a monogram node instead. */
+  logo?: string;
+  current?: boolean;
+  description: string;
 };
 
 export type ProjectMetric = {
@@ -128,15 +128,45 @@ export const site = {
 
 export const experience: Experience[] = [
   {
-    role: "Artificial Intelligence Engineer",
-    company: "iQube",
-    period: "June 2024 - Present",
-    summary:
-      "Designing, developing, and deploying scalable end-to-end AI systems spanning machine learning, deep learning, and generative AI.",
-    highlights: [
-      "Built production-ready FastAPI-based platforms with RAG pipelines, vector databases, hybrid retrieval, cross-encoder reranking, LLM integration, and robust observability via latency tracing and structured logging.",
-      "Architected end-to-end data pipelines for preprocessing, EDA, dimensionality reduction, and model optimization, delivering time-series forecasting, risk classification, and financial analytics models on large-scale datasets for real-world decision-making.",
-    ],
+    role: "AI Engineer",
+    company: "iQube Innovation Center",
+    period: "Present",
+    logo: "/companies/iqube.png",
+    current: true,
+    description:
+      "Designed and deployed production-ready AI systems across diverse innovation domains, building scalable end-to-end ML pipelines using machine learning, deep learning, and generative AI, while architecting robust platforms that translate complex R&D into measurable business impact with strong focus on scalability, reliability, and seamless real-world integration.",
+  },
+  {
+    role: "Startup Accelerator Exchange Program",
+    company: "Forge Innovation & Ventures",
+    period: "Aug 2025 - Jan 2026",
+    logo: "/companies/forge.jpg",
+    description:
+      "Built and iterated early-stage AI systems under compressed execution cycles, translating venture concepts into deployable architectures spanning RAG pipelines, retrieval workflows, and inference layers while balancing rapid iteration with system reliability and production constraints.",
+  },
+  {
+    role: "AI Engineer",
+    company: "HyperVerge",
+    period: "Feb 2025 - Jul 2025",
+    logo: "/companies/hyperverge.png",
+    description:
+      "Led the development of AI-driven financial analytics solutions on large-scale transaction datasets, building time-series forecasting and risk classification models, while designing end-to-end data pipelines spanning preprocessing, EDA, dimensionality reduction, and model optimization to deliver statistically robust predictive systems for credit health assessment and risk modeling.",
+  },
+  {
+    role: "Machine Learning Intern",
+    company: "iNeuron.ai",
+    period: "Dec 2024 - Feb 2025",
+    logo: "/companies/ineuron.png",
+    description:
+      "Developed a store sales forecasting system using historical data with advanced preprocessing and feature engineering to model trends and seasonality; trained a Random Forest regressor and deployed it as an interactive Streamlit app for real-time predictions and business insights.",
+  },
+  {
+    role: "AI Intern",
+    company: "Robolog Automation",
+    period: "Jun 2024 - Nov 2024",
+    logo: "/companies/robolog.jpg",
+    description:
+      "Built AI-driven predictive maintenance systems using LSTM Autoencoders and advanced time-series analysis to detect anomalies in IoT sensor streams and forecast equipment degradation, while developing end-to-end pipelines with robust feature engineering, validation frameworks, and intelligent alert mechanisms to convert model outputs into actionable maintenance insights and operational optimization.",
   },
 ];
 
@@ -315,46 +345,48 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "AutoDocs",
-    tagline: "AI-Powered Documentation Platform",
+    title: "Grappy",
+    tagline: "Governed, Human-Gated AI Bug-Fix Workflow",
     kind: "Project",
     description:
-      "An AI-powered platform that automatically generates and maintains technical documentation from GitHub repositories, keeping docs updated in real time using webhooks and AI-based content understanding.",
-    why: "Documentation goes stale the moment code changes, so most teams simply stop writing it. AutoDocs makes docs a side effect of shipping: connect a repository and structured documentation stays current on its own.",
-    edge: "Documentation is generated as ordered chunks persisted to Postgres and rendered as structured HTML, with Clerk-enforced repository ownership checks and webhook-driven regeneration keeping output in sync with the codebase.",
-    metrics: [],
+      "A governed, auditable, human-gated bug-fix workflow for Python maintainers, built as a Lemma pod with a Vite/React app for the Gappy AI Hackathon (\"Ship to Get Hired\").",
+    why: "Coding agents can already write patches; the maintainer's harder question is whether a patch can be trusted to enter the repository. Grappy makes that trust layer the product: the coding loop is useful, the audit is the moat.",
+    edge: "It reproduces the bug with a real failing pytest run before writing any code, fixes against that maintainer-approved oracle until RED turns GREEN, records every step in an append-only evidence log, asks a second agent for a review verdict, pauses for explicit human approval, and only then opens a pull request whose body is the evidence trail.",
+    metrics: [
+      { value: "RED→GREEN", label: "real pytest oracle before any PR" },
+      { value: "2", label: "data structures form the entire audit spine" },
+      { value: "100%", label: "of runs replayable from append-only events" },
+    ],
     architecture: {
-      label: "Docs pipeline",
+      label: "One governed change run",
       nodes: [
-        "GitHub repository",
-        "Webhook triggers",
-        "AI doc generation",
-        "Ordered chunks in Postgres",
-        "Structured docs UI",
+        "Bug report",
+        "Reproduce (pytest RED)",
+        "AST fault localization",
+        "Plan + patch",
+        "Test (RED → GREEN)",
+        "Agent reviewer",
+        "Human approval",
+        "PR as evidence",
       ],
     },
-    media: {
-      type: "image",
-      src: "/media/autodocs.png",
-      alt: "AutoDocs landing page: Because developers love shipping, not writing",
-      width: 1496,
-      height: 792,
-      href: "https://auto-docs-version1.vercel.app",
-    },
     highlights: [
-      "Built repository management end-to-end: fetching repositories from GitHub, persisting selections to Neon Postgres, and triggering documentation generation workflows per repository.",
-      "Rendered documentation from ordered chunk storage with Clerk authentication and per-repository ownership enforcement.",
+      "Escalates instead of thrashing: max-iteration, cost-cap, wallclock, stuck-detection, and circuit-breaker guards move a run to human hands the moment the fix loop stops converging.",
+      "Collapses the whole product onto a two-table spine (change_runs for state, fix_events for evidence), so the app, workflow, reviewer agent, approval form, replay function, and PR body all read from the same audit log.",
+      "Runs patches in a Lemma-native pytest sandbox with real exit codes, indexes the repository via AST for symbol-level fault localization, and opens pull requests through a GitHub App integration.",
     ],
-    stack: ["Next.js", "Clerk", "Neon Postgres", "GitHub API"],
+    stack: [
+      "Lemma SDK",
+      "Python 3.14",
+      "Vite",
+      "React 19",
+      "Azure OpenAI",
+      "pytest",
+    ],
     links: [
       {
-        label: "Live demo",
-        href: "https://auto-docs-version1.vercel.app",
-        kind: "live",
-      },
-      {
         label: "GitHub",
-        href: "https://github.com/NithishaVenkatesh/AutoDocs_v1",
+        href: "https://github.com/theCodeForgerHQ/Gappy",
         kind: "github",
       },
     ],
@@ -424,8 +456,8 @@ export const skillGroups: SkillGroup[] = [
  * skill tags. Only skills with a verifiable project mapping appear here.
  */
 export const skillUsage: Record<string, string[]> = {
-  Python: ["Athenaeum", "Nucleus AI", "iQube"],
-  TypeScript: ["NextHire AI", "AutoDocs", "Athenaeum"],
+  Python: ["Athenaeum", "Nucleus AI", "Grappy", "iQube"],
+  TypeScript: ["NextHire AI", "Athenaeum"],
   SQL: ["NextHire AI", "Nucleus AI"],
   "OpenAI Agentic SDK": ["NextHire AI"],
   "RAG Architecture": ["Nucleus AI", "Athenaeum", "iQube"],
@@ -438,10 +470,10 @@ export const skillUsage: Record<string, string[]> = {
   Pinecone: ["Nucleus AI"],
   LangSmith: ["Nucleus AI"],
   FastAPI: ["Athenaeum", "Nucleus AI", "iQube"],
-  "PostgreSQL (Neon)": ["NextHire AI", "AutoDocs", "Nucleus AI"],
+  "PostgreSQL (Neon)": ["NextHire AI", "Nucleus AI"],
   ClickHouse: ["Nucleus AI"],
   Docker: ["NextHire AI", "Nucleus AI"],
-  Vercel: ["NextHire AI", "AutoDocs", "Athenaeum"],
+  Vercel: ["NextHire AI", "Athenaeum"],
   "Observability (Metabase)": ["Nucleus AI"],
 };
 
