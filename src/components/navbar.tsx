@@ -7,10 +7,9 @@ import {
   FolderGit2,
   Layers,
   Mail,
-  ArrowDownToLine,
+  FileText,
   Command,
 } from "lucide-react";
-import { site } from "@/data/site";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
 
@@ -75,13 +74,12 @@ export function Navbar() {
         </button>
 
         <a
-          href={site.resumeUrl}
-          download
+          href="#resume"
           className="flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5 text-[13px] font-medium text-white transition-opacity duration-200 hover:opacity-90"
         >
-          <ArrowDownToLine size={15} strokeWidth={2} aria-hidden />
+          <FileText size={15} strokeWidth={2} aria-hidden />
           <span className="hidden sm:inline">Resume</span>
-          <span className="sr-only sm:hidden">Download resume</span>
+          <span className="sr-only sm:hidden">View resume</span>
         </a>
       </motion.nav>
     </header>

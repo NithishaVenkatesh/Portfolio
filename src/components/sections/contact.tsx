@@ -1,8 +1,7 @@
-import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Eye } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/motion";
 import { CopyEmail } from "@/components/copy-email";
-import { ResumePreview } from "@/components/resume-preview";
 import { site } from "@/data/site";
 
 export function ContactSection() {
@@ -34,7 +33,13 @@ export function ContactSection() {
               <Phone size={14} aria-hidden />
               {site.phone}
             </a>
-            <ResumePreview />
+            <a
+              href="#resume"
+              className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors duration-200 hover:bg-surface"
+            >
+              <Eye size={14} aria-hidden />
+              View resume
+            </a>
           </div>
 
           <div className="mt-5 flex items-center gap-4">

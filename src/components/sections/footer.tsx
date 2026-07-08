@@ -20,8 +20,7 @@ export function Footer() {
             </a>
           ))}
           <a
-            href={site.resumeUrl}
-            download
+            href="#resume"
             className="text-[13px] font-medium text-soft transition-colors duration-200 hover:text-ink"
           >
             Resume

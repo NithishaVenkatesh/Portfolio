@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { BadgeCheck, ArrowDownToLine, ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { BadgeCheck, ArrowRight, FileText, Github, Linkedin, Mail } from "lucide-react";
 import { site } from "@/data/site";
 import { HoverLift } from "@/components/motion";
 
@@ -73,12 +73,11 @@ export function Hero() {
             />
           </a>
           <a
-            href={site.resumeUrl}
-            download
+            href="#resume"
             className="inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors duration-200 hover:bg-surface"
           >
-            <ArrowDownToLine size={14} aria-hidden />
-            Download resume
+            <FileText size={14} aria-hidden />
+            View resume
           </a>
 
           <div className="ml-1 flex items-center gap-1" aria-label="Social links">

@@ -3,10 +3,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowDownToLine,
   Check,
   Copy,
   ExternalLink,
+  FileText,
   FolderGit2,
   Github,
   Layers,
@@ -114,13 +114,15 @@ export function CommandPalette() {
         },
       },
       {
-        id: "download-resume",
+        id: "view-resume",
         group: "Actions",
-        title: "Download resume",
-        hint: "PDF",
-        keywords: "resume cv download pdf",
-        icon: ArrowDownToLine,
-        run: () => openExternal(site.resumeUrl),
+        title: "View resume",
+        hint: "Opens in-page, download inside",
+        keywords: "resume cv view download pdf",
+        icon: FileText,
+        run: () => {
+          window.location.hash = "resume";
+        },
       },
       {
         id: "open-github",

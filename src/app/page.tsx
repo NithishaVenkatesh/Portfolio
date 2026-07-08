@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { BackToTop } from "@/components/back-to-top";
 import { CommandPalette } from "@/components/command-palette";
+import { ResumeViewer } from "@/components/resume-viewer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { Hero } from "@/components/sections/hero";
 import { GlanceSection } from "@/components/sections/glance";
@@ -54,6 +55,7 @@ export default function Home() {
       </main>
       <BackToTop />
       <CommandPalette />
+      <ResumeViewer />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
