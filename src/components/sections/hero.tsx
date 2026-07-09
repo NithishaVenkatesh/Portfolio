@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { BadgeCheck, ArrowRight, FileText, Github, Linkedin, Mail } from "lucide-react";
 import { site } from "@/data/site";
@@ -40,16 +41,31 @@ export function Hero() {
   return (
     <section id="hero" aria-label="Introduction" className="pb-14 pt-28 sm:pb-16 sm:pt-32">
       <Enter delay={0}>
-        <a
-          href="#contact"
-          className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-3 py-1.5 font-mono text-[11.5px] font-medium text-emerald-700 transition-colors duration-200 hover:border-emerald-500/50"
-        >
-          <span className="relative flex h-1.5 w-1.5" aria-hidden>
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          </span>
-          {site.availability}
-        </a>
+        <div className="mb-5 flex flex-wrap items-center gap-2">
+          <a
+            href="#athenaeum"
+            className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-white px-3 py-1.5 font-mono text-[11.5px] font-semibold text-ink shadow-(--shadow-card) transition-shadow duration-200 hover:shadow-(--shadow-lift)"
+          >
+            <Image
+              src="/microsoft.svg"
+              alt=""
+              width={12}
+              height={12}
+              className="h-3 w-3"
+            />
+            Microsoft Skill Fest Hackathon Winner · 2026
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-3 py-1.5 font-mono text-[11.5px] font-medium text-emerald-700 transition-colors duration-200 hover:border-emerald-500/50"
+          >
+            <span className="relative flex h-1.5 w-1.5" aria-hidden>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            </span>
+            {site.availability}
+          </a>
+        </div>
         <h1 className="flex items-center gap-1.5 text-[22px] font-bold leading-tight tracking-tight">
           {site.name}
           <BadgeCheck
