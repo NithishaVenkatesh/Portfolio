@@ -357,6 +357,8 @@ export const projects: Project[] = [
       type: "video",
       src: "/media/grappy-demo.mp4",
       label: "Grappy governed bug-fix workflow demo",
+      // Static title screens until ~48s; start the preview at the walkthrough.
+      startAt: 48,
     },
     highlights: [
       "Escalates instead of thrashing: max-iteration, cost-cap, wallclock, stuck-detection, and circuit-breaker guards move a run to human hands the moment the fix loop stops converging.",
