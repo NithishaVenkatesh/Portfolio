@@ -163,14 +163,14 @@ export const experience: Experience[] = [
 export const projects: Project[] = [
   {
     title: "Athenaeum",
-    tagline: "Multi-Agent Learning System",
+    tagline: "Grounded Multi-Agent Learning Platform",
     kind: "Project",
     featured: true,
     award: "Winner · Microsoft Skill Fest Hackathon",
     description:
-      "A red-team-hardened, multi-agent tutoring platform on Microsoft Foundry covering learning-path curation, capacity-aware study planning, citation-grounded tutoring, and graded assessments.",
-    why: "Built for the Microsoft hackathon's Reasoning Agents track on one stance: routing, gating, grounding, and grading are decisions, not prose. They run at temperature 0 and are checked by code, so the model narrates outcomes it cannot fabricate.",
-    edge: "Every turn streams through an inspectable reasoning pipeline: the model, tier, latency, confidence, and grounding source are visible per phase instead of hidden behind a chat bubble. The safety gate survived roughly 464 live adversarial runs across two full rounds without a single over-refusal regression.",
+      "A **red-team-hardened, multi-agent tutoring platform** on Microsoft Foundry covering learning-path curation, **capacity-aware study planning**, citation-grounded tutoring, and **tamper-resistant graded assessments**. Winner of the **Microsoft Skill Fest Hackathon (Student Award, 2026)**.",
+    why: "Built for the Microsoft hackathon's Reasoning Agents track on one stance: **routing, gating, grounding, and grading are decisions, not prose**. They run at **temperature 0 and are checked by code**, so the model narrates outcomes it cannot fabricate.",
+    edge: "Every turn streams through an **inspectable reasoning pipeline**: the model, tier, latency, confidence, and grounding source are **visible per phase** instead of hidden behind a chat bubble. The safety gate survived roughly **464 live adversarial runs** across two full rounds **without a single over-refusal regression**.",
     metrics: [
       { value: "232", label: "adversarial cases across 13 batteries" },
       { value: "100%", label: "direct block-rate, 96% converter-sweep" },
@@ -195,12 +195,13 @@ export const projects: Project[] = [
       label: "Athenaeum product demo",
       // The demo opens on a ~15s static intro; start the preview at the action.
       startAt: 18,
+      playbackRate: 3,
     },
     highlights: [
-      "Designed a 3-node reasoning pipeline (gate → router → answer) streaming 12 typed SSE event types with a phase-by-phase trace exposing model, tier, latency, confidence, and grounding source, making reasoning inspectable rather than hidden in a chat window.",
-      "Engineered a 5-layer defense-in-depth safety gate (regex and deterministic heuristics handling 24 homoglyphs, Groq Prompt Guard 2, Azure FAST classifier, Azure RAI filter), validated across 13 adversarial batteries and 232 cases, achieving a 100% direct block-rate and 96% converter-sweep block-rate with zero over-refusal regression.",
-      "Built hybrid Foundry IQ grounding (Azure AI Search agentic retrieval plus IDF-gated lexical fallback), Azure AI Evaluation scoring, and a re-dispatch reflection loop ensuring every cited claim is verifiable.",
-      "Implemented a 4-tier model fallback chain with per-provider circuit breakers, exponential-backoff retry, and a typed unsafe-vs-unreachable distinction so safety refusals never silently fail open.",
+      "Designed a **3-node reasoning pipeline** (gate → router → answer) streaming **12 typed SSE event types** with a phase-by-phase trace exposing model, tier, latency, confidence, and grounding source, making **reasoning inspectable** rather than hidden in a chat window.",
+      "Engineered a **5-layer defense-in-depth safety gate** (regex and deterministic heuristics handling 24 homoglyphs, Groq Prompt Guard 2, Azure FAST classifier, Azure RAI filter), validated across **13 adversarial batteries and 232 cases**, achieving a **100% direct block-rate** and 96% converter-sweep block-rate with zero over-refusal regression.",
+      "Built **hybrid Foundry IQ grounding** (Azure AI Search agentic retrieval plus IDF-gated lexical fallback), Azure AI Evaluation scoring, and a **re-dispatch reflection loop** ensuring every cited claim is verifiable.",
+      "Enforced production rigor: **611 backend tests** across 66 files behind an **80% coverage gate**; manager insights are **aggregate-only by data-flow construction**, making per-individual data leakage structurally impossible.",
     ],
     stack: [
       "FastAPI",
@@ -284,22 +285,22 @@ export const projects: Project[] = [
   },
   {
     title: "Nucleus AI",
-    tagline: "Enterprise Knowledge Platform",
+    tagline: "Enterprise Knowledge Platform (RAG)",
     kind: "Project",
     description:
-      "A multi-service RAG system ingesting structured knowledge from Confluence, delivering citable responses through reliability-first validation layers.",
-    why: "Internal knowledge rots quietly in Confluence, and an answer nobody can verify is an answer nobody trusts. Nucleus treats retrieval quality, data freshness, and operability as explicit design goals rather than afterthoughts.",
-    edge: "Answers are validated, not just generated: candidate chunks are reranked by a cross-encoder, the LLM generates only from provided context, and an NLI service scores contradiction between context and answer before anything is returned. Ingestion computes deltas by content hash, so stale chunks deactivate instead of corrupting the index.",
+      "A **10-container microservice RAG platform** ingesting structured knowledge from Confluence, delivering **citable responses** through reliability-first validation layers.",
+    why: "Internal knowledge rots quietly in Confluence, and **an answer nobody can verify is an answer nobody trusts**. Nucleus treats **retrieval quality, data freshness, and operability as explicit design goals** rather than afterthoughts.",
+    edge: "Answers are **validated, not just generated**: candidate chunks are **reranked by a cross-encoder**, the LLM generates only from provided context, and a dedicated **NLI service (DeBERTa-v3 MNLI)** entailment-checks every answer against retrieved evidence before anything is returned. Ingestion computes **deltas by content hash**, so stale chunks deactivate instead of corrupting the index.",
     metrics: [
+      { value: "10", label: "containerized microservices" },
       { value: "~7s", label: "local end-to-end query latency" },
       { value: "6", label: "instrumented pipeline stages per query" },
-      { value: "3", label: "vector indexes: pages, chunks, images" },
     ],
     architecture: {
       label: "Query pipeline",
       nodes: [
         "Confluence ingestion",
-        "Neon + Pinecone",
+        "Postgres + Pinecone",
         "Intent router",
         "Hybrid retrieval",
         "Cross-encoder rerank",
@@ -314,17 +315,17 @@ export const projects: Project[] = [
       label: "Nucleus AI product demo",
     },
     highlights: [
-      "Built a fault-tolerant ingestion pipeline with staged indexing, webhook-driven updates, retry logic, and idempotent upserts, preventing index corruption during iterative knowledge updates.",
-      "Implemented hybrid retrieval (vector search + cross-encoder reranking) with intent-aware filtering, improving retrieval precision while reducing redundant inference calls.",
-      "Instrumented stage-level latency decomposition (~7s local end-to-end) across retrieval, reranking, generation, and validation using LangSmith trace pipelines, with pipeline telemetry flowing to ClickHouse and Metabase dashboards.",
+      "Built a **fault-tolerant ingestion pipeline**: staged indexing with per-stage status tracking (Confluence → Postgres → Pinecone), **webhook-driven sync**, exponential-backoff retries, and **idempotent upserts** that prevent index corruption under continuous updates.",
+      "Implemented **hybrid retrieval** (Pinecone vector search + **cross-encoder reranker microservice**) with intent-aware filtering, improving retrieval precision while reducing redundant inference calls.",
+      "Instrumented **stage-level latency decomposition** (~7s local end-to-end) across retrieval, reranking, generation, and validation using **LangSmith trace pipelines**, with telemetry flowing to **ClickHouse and Metabase dashboards**.",
     ],
     stack: [
       "FastAPI",
       "LangGraph",
       "Pinecone",
-      "Docker",
+      "Docker Compose",
       "ClickHouse",
-      "Confluence",
+      "DeBERTa-v3 NLI",
       "LangSmith",
     ],
     links: [
