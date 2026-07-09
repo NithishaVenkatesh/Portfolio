@@ -12,10 +12,13 @@ export function AutoplayVideo({
   src,
   label,
   className,
+  startAt = 0,
 }: {
   src: string;
   label: string;
   className?: string;
+  /** Seconds to skip into the video, for demos with a static intro. */
+  startAt?: number;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -43,12 +46,19 @@ export function AutoplayVideo({
   return (
     <video
       ref={ref}
-      src={src}
+      src={startAt > 0 ? `${src}#t=${startAt}` : src}
       muted
       loop
       playsInline
       preload="metadata"
       aria-label={label}
+      onTimeUpdate={(event) => {
+        // Media-fragment start is ignored after a loop wraps to 0; re-seek.
+        const video = event.currentTarget;
+        if (startAt > 0 && video.currentTime < startAt - 1) {
+          video.currentTime = startAt;
+        }
+      }}
       className={className}
     />
   );

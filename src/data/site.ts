@@ -29,7 +29,7 @@ export type ProjectMetric = {
 };
 
 export type ProjectMedia =
-  | { type: "video"; src: string; label: string }
+  | { type: "video"; src: string; label: string; startAt?: number }
   | { type: "youtube"; id: string; title: string; poster: string }
   | {
       type: "image";
@@ -121,7 +121,6 @@ export const site = {
     "Applied AI Engineer with 2+ years shipping production AI systems: won the Microsoft Skill Fest Student Award (2026) for a red-team-hardened multi-agent platform that held a 100% block-rate across 232 adversarial cases, and co-built NextHire AI, a SaaS product that evaluates developers on evidence from real debugging sessions. Core strengths: agentic systems, production-grade RAG, hybrid retrieval, LLM evaluation and guardrails, and observability-first backends in Python, FastAPI, and TypeScript.",
   /** Phrase inside `intro` rendered with award styling in the hero. */
   introHighlight: "won the Microsoft Skill Fest Student Award (2026)",
-  availability: "Open to new opportunities",
   email: "nithishaleni1806@gmail.com",
   phone: "+91 6379 074 239",
   resumeUrl: "/resume.pdf",
@@ -186,6 +185,8 @@ export const projects: Project[] = [
       type: "video",
       src: "/media/athenaeum-demo.mp4",
       label: "Athenaeum product demo",
+      // The demo opens on a ~15s static intro; start the preview at the action.
+      startAt: 18,
     },
     highlights: [
       "Designed a 3-node reasoning pipeline (gate → router → answer) streaming 12 typed SSE event types with a phase-by-phase trace exposing model, tier, latency, confidence, and grounding source, making reasoning inspectable rather than hidden in a chat window.",

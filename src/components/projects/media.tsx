@@ -16,6 +16,7 @@ export function MediaPreview({ media }: { media: ProjectMedia }) {
       <AutoplayVideo
         src={media.src}
         label={media.label}
+        startAt={media.startAt}
         className="block h-full w-full object-cover"
       />
     );
@@ -90,6 +91,7 @@ export function MediaFull({ media, title }: { media: ProjectMedia; title: string
         <AutoplayVideo
           src={media.src}
           label={media.label}
+          startAt={media.startAt}
           className="block w-full"
         />
       </div>
