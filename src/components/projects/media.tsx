@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Play } from "lucide-react";
+import { AutoplayVideo } from "@/components/autoplay-video";
 import { YouTubeEmbed } from "@/components/youtube-embed";
 import type { Project, ProjectMedia } from "@/data/site";
 
@@ -12,14 +13,9 @@ import type { Project, ProjectMedia } from "@/data/site";
 export function MediaPreview({ media }: { media: ProjectMedia }) {
   if (media.type === "video") {
     return (
-      <video
+      <AutoplayVideo
         src={media.src}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-label={media.label}
+        label={media.label}
         className="block h-full w-full object-cover"
       />
     );
@@ -91,14 +87,9 @@ export function MediaFull({ media, title }: { media: ProjectMedia; title: string
   if (media.type === "video") {
     return (
       <div className="overflow-hidden rounded-[13px] border border-line bg-surface">
-        <video
+        <AutoplayVideo
           src={media.src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label={media.label}
+          label={media.label}
           className="block w-full"
         />
       </div>

@@ -183,10 +183,9 @@ export const projects: Project[] = [
       ],
     },
     media: {
-      type: "youtube",
-      id: "JJABHMgUSmg",
-      title: "Athenaeum demo",
-      poster: "/media/athenaeum-poster.jpg",
+      type: "video",
+      src: "/media/athenaeum-demo.mp4",
+      label: "Athenaeum product demo",
     },
     highlights: [
       "Designed a 3-node reasoning pipeline (gate → router → answer) streaming 12 typed SSE event types with a phase-by-phase trace exposing model, tier, latency, confidence, and grounding source, making reasoning inspectable rather than hidden in a chat window.",
