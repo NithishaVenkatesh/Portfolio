@@ -118,9 +118,9 @@ export const site = {
   headline:
     "Applied AI Engineer specializing in agentic systems and production-grade RAG.",
   intro:
-    "Applied AI Engineer specializing in agentic systems and production-grade RAG, with a backend-first focus on FastAPI, data pipelines, and LLM orchestration (LangGraph, OpenAI Agentic SDK). Built a multi-agent tutoring platform (winner of the Microsoft Skill Fest Student Award) with a hardened safety layer and citation-grounded retrieval, and co-built NextHire AI, a SaaS agentic developer-evaluation product.",
+    "Applied AI Engineer with 2+ years shipping production AI systems: won the Microsoft Skill Fest Student Award (2026) for a red-team-hardened multi-agent platform that held a 100% block-rate across 232 adversarial cases, and co-built NextHire AI, a SaaS product that evaluates developers on evidence from real debugging sessions. Core strengths: agentic systems, production-grade RAG, hybrid retrieval, LLM evaluation and guardrails, and observability-first backends in Python, FastAPI, and TypeScript.",
   /** Phrase inside `intro` rendered with award styling in the hero. */
-  introHighlight: "winner of the Microsoft Skill Fest Student Award",
+  introHighlight: "won the Microsoft Skill Fest Student Award (2026)",
   availability: "Open to new opportunities",
   email: "nithishaleni1806@gmail.com",
   phone: "+91 6379 074 239",
