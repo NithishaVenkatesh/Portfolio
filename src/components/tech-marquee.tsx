@@ -20,7 +20,7 @@ function ToolChip({ tool }: { tool: Tool }) {
           {tool.name.charAt(0).toUpperCase()}
         </span>
       )}
-      <span className="whitespace-nowrap font-mono text-[12px] font-medium text-soft">
+      <span className="whitespace-nowrap text-[12px] font-medium text-soft">
         {tool.name}
       </span>
     </span>

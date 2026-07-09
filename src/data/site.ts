@@ -353,6 +353,11 @@ export const projects: Project[] = [
         "PR as evidence",
       ],
     },
+    media: {
+      type: "video",
+      src: "/media/grappy-demo.mp4",
+      label: "Grappy governed bug-fix workflow demo",
+    },
     highlights: [
       "Escalates instead of thrashing: max-iteration, cost-cap, wallclock, stuck-detection, and circuit-breaker guards move a run to human hands the moment the fix loop stops converging.",
       "Collapses the whole product onto a two-table spine (change_runs for state, fix_events for evidence), so the app, workflow, reviewer agent, approval form, replay function, and PR body all read from the same audit log.",
@@ -367,6 +372,11 @@ export const projects: Project[] = [
       "pytest",
     ],
     links: [
+      {
+        label: "Live",
+        href: "https://grappy-app.apps.lemma.work/",
+        kind: "live",
+      },
       {
         label: "GitHub",
         href: "https://github.com/theCodeForgerHQ/Gappy",
@@ -434,33 +444,7 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
-/**
- * Where each skill has actually shipped. Rendered as a hover/focus popover on
- * skill tags. Only skills with a verifiable project mapping appear here.
- */
-export const skillUsage: Record<string, string[]> = {
-  Python: ["Athenaeum", "Nucleus AI", "Grappy", "iQube"],
-  TypeScript: ["NextHire AI", "Athenaeum"],
-  SQL: ["NextHire AI", "Nucleus AI"],
-  "OpenAI Agentic SDK": ["NextHire AI"],
-  "RAG Architecture": ["Nucleus AI", "Athenaeum", "iQube"],
-  "Hybrid Retrieval": ["Nucleus AI", "Athenaeum", "iQube"],
-  "Vector Search": ["Nucleus AI", "iQube"],
-  "LLM Evaluation": ["Athenaeum", "NextHire AI"],
-  Guardrails: ["Athenaeum", "Nucleus AI"],
-  "NLI-based Validation": ["Nucleus AI"],
-  LangGraph: ["Nucleus AI"],
-  Pinecone: ["Nucleus AI"],
-  LangSmith: ["Nucleus AI"],
-  FastAPI: ["Athenaeum", "Nucleus AI", "iQube"],
-  "PostgreSQL (Neon)": ["NextHire AI", "Nucleus AI"],
-  ClickHouse: ["Nucleus AI"],
-  Docker: ["NextHire AI", "Nucleus AI"],
-  Vercel: ["NextHire AI", "Athenaeum"],
-  "Observability (Metabase)": ["Nucleus AI"],
-};
-
-/** Logo tiles for the "TECH stacks" grid, carried over from the V1 site's visual identity. */
+/** Logo chips for "The Toolbox" marquee. */
 export const tools: Tool[] = [
   { name: "Python", logo: "/tech/python.jpg", url: "https://www.python.org/" },
   {

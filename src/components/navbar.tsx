@@ -17,7 +17,7 @@ const NAV_ITEMS = [
   { id: "hero", label: "Home", icon: House },
   { id: "experience", label: "Experience", icon: BriefcaseBusiness },
   { id: "project", label: "Projects", icon: FolderGit2 },
-  { id: "stacks-skills", label: "Stack", icon: Layers },
+  { id: "stacks-skills", label: "Toolbox", icon: Layers },
   { id: "contact", label: "Contact", icon: Mail },
 ] as const;
 

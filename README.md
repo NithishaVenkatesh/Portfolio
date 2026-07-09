@@ -14,7 +14,7 @@ A ground-up rebuild of [nithisha.framer.website](https://nithisha.framer.website
 - **Project showcases**: each major project is a product-style card with live preview media (screenshot or demo video), a "why it exists / what makes it interesting" story, source-verified metrics, an animated architecture pipeline diagram, expandable engineering highlights, and live/GitHub/video/docs links.
 - **Command palette** (`Cmd/Ctrl+K`): search sections, projects, and skills; quick actions for copy-email, resume download, and external profiles.
 - **AI Systems at a Glance**: count-up stat band (numbers verified against public repos and product pages).
-- **Skill provenance**: hovering a skill tag shows which shipped projects used it.
+- **The Toolbox**: counter-scrolling logo marquee of the working stack; pauses on hover, degrades gracefully under reduced motion.
 - **Resume preview**: in-page PDF dialog plus one-click download; **copy email** with confirmation.
 - **Reading progress bar**, back-to-top, active-section navbar highlighting, "currently building" status pill.
 
