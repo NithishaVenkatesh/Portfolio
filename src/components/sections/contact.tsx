@@ -1,8 +1,11 @@
-import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, Eye } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/motion";
 import { CopyEmail } from "@/components/copy-email";
 import { site } from "@/data/site";
+
+const PILL =
+  "inline-flex items-center gap-2 rounded-full border border-line-strong bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors duration-200 hover:bg-surface";
 
 export function ContactSection() {
   return (
@@ -29,20 +32,10 @@ export function ContactSection() {
             </a>
             <CopyEmail />
             <a
-              href={`tel:${site.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-card px-4 py-2 text-[13.5px] font-medium text-ink transition-colors duration-200 hover:bg-surface"
-            >
-              <Phone size={14} aria-hidden />
-              {site.phone}
-            </a>
-          </div>
-
-          <div className="mt-5 flex items-center gap-4">
-            <a
               href="https://github.com/NithishaVenkatesh"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[13px] font-medium text-soft transition-colors duration-200 hover:text-ink"
+              className={PILL}
             >
               <Github size={14} aria-hidden />
               GitHub
@@ -51,10 +44,14 @@ export function ContactSection() {
               href="https://linkedin.com/in/nithisha-v"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[13px] font-medium text-soft transition-colors duration-200 hover:text-ink"
+              className={PILL}
             >
               <Linkedin size={14} aria-hidden />
               LinkedIn
+            </a>
+            <a href="#resume" className={PILL}>
+              <Eye size={14} aria-hidden />
+              View resume
             </a>
           </div>
         </div>
