@@ -11,6 +11,7 @@ import {
   Trophy,
 } from "lucide-react";
 import { MediaPreview, DiagramPreview } from "@/components/projects/media";
+import { Md } from "@/components/md";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/data/site";
 
@@ -90,7 +91,7 @@ export function ProjectCard({
         </div>
 
         <p className="mt-3 line-clamp-2 text-[13px] leading-relaxed text-soft">
-          {project.description}
+          <Md text={project.description} />
         </p>
 
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">

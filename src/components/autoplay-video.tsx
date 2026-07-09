@@ -13,14 +13,21 @@ export function AutoplayVideo({
   label,
   className,
   startAt = 0,
+  playbackRate = 1,
 }: {
   src: string;
   label: string;
   className?: string;
   /** Seconds to skip into the video, for demos with a static intro. */
   startAt?: number;
+  /** Speed multiplier, for long screen recordings previewed as a loop. */
+  playbackRate?: number;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (ref.current) ref.current.playbackRate = playbackRate;
+  }, [playbackRate]);
 
   useEffect(() => {
     const video = ref.current;
@@ -58,6 +65,9 @@ export function AutoplayVideo({
         if (startAt > 0 && video.currentTime < startAt - 1) {
           video.currentTime = startAt;
         }
+      }}
+      onLoadedMetadata={(event) => {
+        event.currentTarget.playbackRate = playbackRate;
       }}
       className={className}
     />

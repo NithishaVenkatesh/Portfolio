@@ -29,7 +29,13 @@ export type ProjectMetric = {
 };
 
 export type ProjectMedia =
-  | { type: "video"; src: string; label: string; startAt?: number }
+  | {
+      type: "video";
+      src: string;
+      label: string;
+      startAt?: number;
+      playbackRate?: number;
+    }
   | { type: "youtube"; id: string; title: string; poster: string }
   | {
       type: "image";
@@ -331,50 +337,45 @@ export const projects: Project[] = [
   },
   {
     title: "Grappy",
-    tagline: "Governed, Human-Gated AI Bug-Fix Workflow",
+    tagline: "Governed, Auditable AI Bug-Fix Workflow",
     kind: "Project",
     description:
-      "A governed, auditable, human-gated bug-fix workflow for Python maintainers, built as a Lemma pod with a Vite/React app for the Gappy AI Hackathon (\"Ship to Get Hired\").",
-    why: "Coding agents can already write patches; the maintainer's harder question is whether a patch can be trusted to enter the repository. Grappy makes that trust layer the product: the coding loop is useful, the audit is the moat.",
-    edge: "It reproduces the bug with a real failing pytest run before writing any code, fixes against that maintainer-approved oracle until RED turns GREEN, records every step in an append-only evidence log, asks a second agent for a review verdict, pauses for explicit human approval, and only then opens a pull request whose body is the evidence trail.",
+      'A **governed, human-gated bug-fix workflow** for Python maintainers, built as a Lemma pod with a Vite/React app for the Gappy AI "Ship to Get Hired" hackathon. Coding agents can already write patches; Grappy makes **the trust layer the product**.',
+    why: 'The maintainer\'s harder question is not "can an agent write a patch" but **"can I trust this patch enough to let it enter my repository."** Grappy **reproduces the bug with a real failing pytest run before writing code**, fixes against that maintainer-approved oracle, and only opens a pull request after **explicit human approval**.',
+    edge: "Every step lands in an **append-only audit log**: RED reproduction, **fault localization from real execution evidence**, the **RED-to-GREEN flip**, nearby regression checks, and a second opinion from a Lemma Agent reviewer. The **pull request body is the evidence trail**, so the run can be inspected later without asking the model to explain itself.",
     metrics: [
-      { value: "RED→GREEN", label: "real pytest oracle before any PR" },
-      { value: "2", label: "data structures form the entire audit spine" },
-      { value: "100%", label: "of runs replayable from append-only events" },
+      { value: "RED→GREEN", label: "every fix proven against a failing test" },
+      { value: "100%", label: "of steps recorded in an append-only audit log" },
+      { value: "2", label: "reviews before any PR: agent + human" },
     ],
     architecture: {
-      label: "One governed change run",
+      label: "One change run",
       nodes: [
         "Bug report",
-        "Reproduce (pytest RED)",
-        "AST fault localization",
-        "Plan + patch",
-        "Test (RED → GREEN)",
-        "Agent reviewer",
+        "RED pytest reproduction",
+        "Fault localization",
+        "Patch against oracle",
+        "Regression sweep",
+        "Agent review",
         "Human approval",
-        "PR as evidence",
+        "Evidence-trail PR",
       ],
     },
     media: {
       type: "video",
       src: "/media/grappy-demo.mp4",
-      label: "Grappy governed bug-fix workflow demo",
+      label: "Grappy AI demo for the Gappy AI Ship to Get Hired hackathon",
       // Static title screens until ~48s; start the preview at the walkthrough.
       startAt: 48,
+      playbackRate: 3,
     },
     highlights: [
-      "Escalates instead of thrashing: max-iteration, cost-cap, wallclock, stuck-detection, and circuit-breaker guards move a run to human hands the moment the fix loop stops converging.",
-      "Collapses the whole product onto a two-table spine (change_runs for state, fix_events for evidence), so the app, workflow, reviewer agent, approval form, replay function, and PR body all read from the same audit log.",
-      "Runs patches in a Lemma-native pytest sandbox with real exit codes, indexes the repository via AST for symbol-level fault localization, and opens pull requests through a GitHub App integration.",
+      "Built the full workflow as a **Lemma pod (Python 3.14)** with a Vite/React 19 frontend, using the **Lemma SDK** for workflow orchestration, agent review, and GitHub connectivity.",
+      "Enforced **reproduce-before-write**: the agent must produce a **maintainer-approved failing pytest run** before it is allowed to touch code, eliminating patches that fix the wrong bug.",
+      "Recorded every workflow step to an **append-only audit log with replay support**, making each AI-generated change reproducible, inspectable, and independently validated.",
+      "Gated PR creation behind **explicit human approval**, keeping the maintainer in control while delegating the mechanical repair loop.",
     ],
-    stack: [
-      "Lemma SDK",
-      "Python 3.14",
-      "Vite",
-      "React 19",
-      "Azure OpenAI",
-      "pytest",
-    ],
+    stack: ["Lemma SDK", "Python 3.14", "pytest", "Vite", "React 19"],
     links: [
       {
         label: "Live",

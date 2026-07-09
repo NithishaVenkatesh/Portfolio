@@ -17,6 +17,7 @@ export function MediaPreview({ media }: { media: ProjectMedia }) {
         src={media.src}
         label={media.label}
         startAt={media.startAt}
+        playbackRate={media.playbackRate}
         className="block h-full w-full object-cover"
       />
     );
@@ -92,6 +93,7 @@ export function MediaFull({ media, title }: { media: ProjectMedia; title: string
           src={media.src}
           label={media.label}
           startAt={media.startAt}
+          playbackRate={media.playbackRate}
           className="block w-full"
         />
       </div>

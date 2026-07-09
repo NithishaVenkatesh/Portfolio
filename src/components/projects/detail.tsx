@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { ArchitectureFlow } from "@/components/architecture-flow";
 import { MediaFull } from "@/components/projects/media";
+import { Md } from "@/components/md";
 import { Tag } from "@/components/ui/tag";
 import type { Project } from "@/data/site";
 
@@ -170,7 +171,7 @@ export function ProjectDetail({
               {project.tagline}
             </p>
             <p className="mt-4 max-w-[640px] text-[14.5px] leading-relaxed text-soft">
-              {project.description}
+              <Md text={project.description} />
             </p>
           </motion.header>
 
@@ -216,13 +217,13 @@ export function ProjectDetail({
             <div className="flex min-w-0 flex-col gap-8">
               <Block label="Why it exists" delay={0.2}>
                 <p className="text-[14.5px] leading-relaxed text-soft">
-                  {project.why}
+                  <Md text={project.why} />
                 </p>
               </Block>
 
               <Block label="What makes it interesting" delay={0.25}>
                 <p className="text-[14.5px] leading-relaxed text-soft">
-                  {project.edge}
+                  <Md text={project.edge} />
                 </p>
               </Block>
 
@@ -247,7 +248,7 @@ export function ProjectDetail({
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         <p className="text-[14px] leading-relaxed text-soft">
-                          {highlight}
+                          <Md text={highlight} />
                         </p>
                       </li>
                     ))}
