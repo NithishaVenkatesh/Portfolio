@@ -55,16 +55,6 @@ export function Hero() {
             />
             Microsoft Skill Fest Hackathon Winner · 2026
           </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-3 py-1.5 font-mono text-[11.5px] font-medium text-emerald-700 transition-colors duration-200 hover:border-emerald-500/50"
-          >
-            <span className="relative flex h-1.5 w-1.5" aria-hidden>
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            </span>
-            {site.availability}
-          </a>
         </div>
         <h1 className="flex items-center gap-1.5 text-[22px] font-bold leading-tight tracking-tight">
           {site.name}
