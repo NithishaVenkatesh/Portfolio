@@ -1,4 +1,4 @@
-import { GraduationCap } from "lucide-react";
+import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/motion";
 import { education } from "@/data/site";
@@ -8,12 +8,13 @@ export function EducationSection() {
     <Section id="education" title="Education">
       <Reveal>
         <article className="flex items-start gap-3.5 rounded-card border border-line bg-card p-5 shadow-(--shadow-card) sm:p-6">
-          <span
-            aria-hidden
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-soft"
-          >
-            <GraduationCap size={18} />
-          </span>
+          <Image
+            src={education.logo}
+            alt={`${education.institution} logo`}
+            width={44}
+            height={44}
+            className="h-11 w-11 shrink-0 rounded-full border border-line bg-card object-contain shadow-(--shadow-card)"
+          />
           <div>
             <h3 className="text-[15px] font-semibold leading-snug">
               {education.degree}

@@ -15,13 +15,13 @@ export function AchievementsSection() {
                 aria-hidden
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-soft"
               >
-                {achievement.title.includes("Microsoft") ? (
+                {achievement.logo ? (
                   <Image
-                    src="/microsoft.svg"
+                    src={achievement.logo}
                     alt=""
-                    width={15}
-                    height={15}
-                    className="h-[15px] w-[15px]"
+                    width={18}
+                    height={18}
+                    className="h-[18px] w-[18px] object-contain"
                   />
                 ) : (
                   <Trophy size={15} />

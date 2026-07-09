@@ -83,6 +83,8 @@ export type Achievement = {
   title: string;
   detail: string;
   year: string;
+  /** Path under /public. Omit to render a trophy icon instead. */
+  logo?: string;
 };
 
 export type Stat = {
@@ -533,6 +535,7 @@ export const achievements: Achievement[] = [
     title: "Winner, Microsoft Skill Fest Hackathon",
     detail: "Student Award, Project Athenaeum",
     year: "2026",
+    logo: "/microsoft.svg",
   },
   {
     title: "Achiever's Award, NIDAR",
@@ -543,6 +546,7 @@ export const achievements: Achievement[] = [
     title: "Finalist, Zoho Creator Hackathon",
     detail: "Zoho Corporation",
     year: "2025",
+    logo: "/logos/zoho.png",
   },
 ];
 
@@ -550,6 +554,7 @@ export const education = {
   degree: "B.Tech, Artificial Intelligence & Data Science",
   institution: "Kumaraguru College of Technology",
   score: "CGPA 8.2",
+  logo: "/logos/kct.png",
   // TODO: add graduation year if it should be displayed (not on the resume).
 };
 
